@@ -1,8 +1,15 @@
-import mongoose from "mongoose";
-import { DB_NAME } from "./constants"; 
 
 import express  from "express";
+import connectDB from "./db/index.js";
+
+import dotenv from 'dotenv';
+import path from 'path';
+
+dotenv.config({path: path.join('.env')});
+
 const app = express();
+
+connectDB();
 
 
 // ( async()=> {
@@ -21,3 +28,7 @@ const app = express();
 //         throw error
 //     }
 // })()
+
+        app.listen(8000, ()=>{
+                console.log(`App is listening to Port: ${process.env.PORT}`)
+            })
